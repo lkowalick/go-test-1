@@ -1,0 +1,5 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/fresh-metrics-404415/github.com/lkowalick/go-test-1:$COMMIT_SHA', '.']
+options:
+  logging: CLOUD_LOGGING_ONLY
