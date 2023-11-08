@@ -5,7 +5,12 @@ steps:
   args: ['push', 'gcr.io/${PROJECT_ID}/github.com/lkowalick/go-test-1:${COMMIT_SHA}']
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args: ['run', 'deploy', 'go-test-1-service', '--image', 'gcr.io/${PROJECT_ID}/github.com/lkowalick/go-test-1:${COMMIT_SHA}', '--region', 'us-east4']
+  args: ['run',
+         'deploy',
+         'go-test-1-service',
+         '--image', 'gcr.io/${PROJECT_ID}/github.com/lkowalick/go-test-1:${COMMIT_SHA}',
+         '--region', 'us-east4',
+         '--add-cloudsql-instances', 'fresh-metrics-404415:us-east4:go-test-1']
 options:
   logging: CLOUD_LOGGING_ONLY
 images:
